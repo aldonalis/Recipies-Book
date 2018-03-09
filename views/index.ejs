@@ -1,0 +1,32 @@
+<% include partials/header %>
+
+<div class="container">
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Welcome to Online Recipies Book!</h1>
+            <p>The only place where you can online store your favourite recipies</p>
+            <p>
+                <a class="btn btn-primary btn-lg" href="/recipies/new">Create new recipe</a>
+            </p>
+        </div>
+    </div>
+    
+    <div class="row text-center" style="display: flex; flex-wrap: wrap">
+        <% recipies.forEach(function(recipie) { %>
+            <div class="col-md-3 col-sm-6">
+                <div class="thumbnail">
+                    <img src="<%= recipie.image %>">
+                    <div class="caption">
+                        <h4><%= recipie.title %></h4>
+                    </div>
+                    <p>
+                        <a href="/recipies/<%= recipie._id %>" class="btn btn-primary">More Info</a>
+                    </p>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</div>
+
+
+<% include partials/footer %>

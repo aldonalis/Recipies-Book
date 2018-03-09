@@ -1,0 +1,16 @@
+<% include partials/header %>
+
+<h1><%= recipie.title %></h1>
+
+<img src="<%= recipie.image %>">
+
+<p><%= recipie.description %></p>
+
+<a href="/recipies/<%= recipie._id %>/edit">Edit</a>
+
+<form action="/recipies/<%= recipie._id %>?_method=DELETE" method="POST">
+	<button class="btn btn-danger">Delete</button>
+</form>
+
+
+<% include partials/footer %>

@@ -1,0 +1,33 @@
+<% include partials/header %>
+
+<div class="container">
+    <div class="row">
+        <h2 style="text-align: center">Add a new recipie!</h2>
+        <div style="width: 30%; margin: 30px auto">
+            <form action="/recipies" method="POST">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="recipie[title]" placeholder="Recipie title">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="recipie[image]" placeholder="Image url">
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" rows="3" name="recipie[description]" placeholder="Description"></textarea>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary btn-block">Submit</button>
+                </div>
+            </form>
+            <a href="/recipies"> Go Back</a>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<% include partials/footer %>
