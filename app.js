@@ -15,7 +15,14 @@ app.use(methodOverride("_method"));
 var recipieSchema = new mongoose.Schema({
    title: String,
    image: String,
-   description: String,
+   quantity: Number,
+   unit: String,
+   ingredient: String,
+   cookingTime: String,
+   prepTime: String,
+   serves: Number,
+   difficulty: Number,
+   method: String,
    created: {type: Date, default: Date.now}
 });
 
@@ -32,14 +39,14 @@ var Recipie = mongoose.model("Recipie", recipieSchema);
 // ROUTES
 
 app.get("/", function(req, res) {
-    res.render("home")
+    res.redirect("/recipies");
 });
 
 // INDEX route
 app.get("/recipies", function(req, res) {
     Recipie.find({}, function(err, recipies) {
         if (err) {
-            console.log("Error!");
+            console.log("Error lalalal!");
         } else {
             res.render("index", {recipies: recipies});
         }

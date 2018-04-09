@@ -1,0 +1,23 @@
+/* NEW page */
+#new .init h2 {
+	text-align: center;
+	margin-bottom: 5%;
+}
+
+#new .init {
+	margin: auto 37.5%;
+	width: 30%;
+}
+
+#new .ingredients .form-control {
+	display: inline;
+}
+
+#add {
+	margin-top: 25px;
+}
+
+.form {
+	width: 30%;
+	margin: 30px auto;
+}
