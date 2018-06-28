@@ -1,0 +1,105 @@
+<% include ../partials/header %>
+
+
+<div class="container">
+	<div class="row">
+	<div class="rec-left">
+		<div class="col-xs-12 col-sm-8">
+			<div class="rec-photo">
+				<div class="rec-title">
+					<h1><%= recipe.title %></h1>
+					<form>
+						<a href="/recipes/<%= recipe._id %>/edit" class="btn btn-primary">Edit</a>
+					</form>
+					<form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST" class="buttons">
+						<a class="btn btn-danger">Delete</a>
+					</form>
+				</div>
+				<div class="thumbnail">
+					<img src="<%= recipe.image %>">
+				</div>
+			</div><!-- rec-photo -->
+			<div class="rec-ingredients">
+				<h2>Ingredients:</h2>
+				
+				
+			</div><!-- rec-ingredients -->
+			
+		</div><!-- .col -->
+	</div><!-- rec-left -->
+	
+
+	<div class="rec-right">
+		<div class="col-xs-12 col-sm-3"> 
+			<div class="rec-desc">
+				<h2>Description:</h2>
+				<p class="description"><%= recipe.description %></p>
+			</div><!-- rec-desc -->
+			<div class="rec-info">
+				<h2>Information:</h2>
+				<div class="thumbnail">
+					<p><strong>Preparation time: </strong><%= recipe.prep_time %>min</p>
+					<p><strong>Cooking time: </strong><%= recipe.cooking_time %>min</p>
+					<p><strong>Calories: </strong><%= recipe.kcal %></p>
+					<p><strong>Vegeterian: </strong><%= recipe.vegeterian %></p>
+					<p><strong>Vegan: </strong><%= recipe.vegan %></p>
+					<p><strong>Gluten Free: </strong><%= recipe.glutenFree %></p>
+					<p><strong>Dairy Free: </strong><%= recipe.dairyFree %></p>
+					<p><strong>Serves: </strong><%= recipe.serves %></p>
+				</div>
+			</div><!-- rec-info -->
+			<div class="rec-social">
+				<button type="button" class="btn btn-outline-secondary social-btn"><i class="fas fa-heart"></i> Save</button>
+				<button type="button" class="btn btn-outline-secondary social-btn"><i class="fas fa-print"></i> Print</button>
+				<button type="button" class="btn btn-outline-secondary social-btn"><i class="fas fa-download"></i> Download</button>
+				<div class="social-icons">
+					<div class="social-icon">
+						<a href="http://www.facebook.com"><i class="fab fa-facebook-square fa-2x"></i></a>
+					</div>
+					<div class="social-icon">
+						<a href="http://www.pinterest.com"><i class="fab fa-pinterest-square fa-2x"></i></a>
+					</div>
+				</div>
+			</div>
+		</div><!-- .col -->
+	</div><!-- rec-right -->
+	</div>
+
+
+
+<div class="row">
+	<div class="rec-down">
+		<div class="col-xs-12">
+			<div class="rec-method">
+				<h2>Method:</h2>
+				<p><%= recipe.method %></p>
+			</div><!-- rec-method -->
+			<div class="rec-comments">
+				<h2>Comments:</h2>
+				<a class="btn btn-success btn-new-comment" href="/recipes/<%= recipe._id %>/comments/new">Create new comment</a>
+
+				<% recipe.comments.forEach(function(comment) { %>
+				    <p>
+				    	<strong><%= comment.author %></strong> - <%= comment.text %>
+				        <a class="btn" href="/recipes/<%= recipe._id %>/comments/<%= comment._id%>/edit">Edit</a>
+				        <form action="/recipes/<%= recipe._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+				        	<button class="btn btn-sm btn-danger">Delete</button>
+				        </form>
+				    </p>
+				<% }); %>
+			</div><!-- rec-comments -->
+		</div><!-- .col -->
+	</div><!-- rec-down -->
+</div><!-- row -->
+</div><!-- container -->
+
+
+
+
+			
+
+
+
+
+
+<% include ../partials/footer %>

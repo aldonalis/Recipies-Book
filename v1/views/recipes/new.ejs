@@ -1,0 +1,410 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form">
+                <form action="/recipes" method="POST">
+                    <h1>Create a new recipe!</h1>
+                    <!-- *************** -->
+                    <!--     GENERAL     -->
+                    <!-- *************** -->
+
+                    <!-- recipe title -->
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input class="form-control" id="title" type="text" name="recipe[title]" placeholder="recipe title">
+                    </div>
+                    <!-- Image url -->
+                    <div class="form-group">
+                        <label for="image">Image url</label>
+                        <input class="form-control" id="image" type="text" name="recipe[image]" placeholder="Image url">
+                    </div>
+                    <!-- recipe description -->
+                    <div class="form-group">
+                        <label for="description">recipe description</label>
+                        <textarea
+                            class="form-control"
+                            rows="3"
+                            id="description"
+                            type="text"
+                            name="recipe[description]"
+                            placeholder="Few words about that recipe..."></textarea>
+                    </div>
+
+                    <!-- ******************* -->
+                    <!--     INFORMATION     -->
+                    <!-- ******************* -->
+                    <h2 id="h2-information">Information</h2>
+                    <div class="row">
+
+                        <!-- Preparation time input field -->
+                        <!-- ============================ -->
+                        <div class="col-xs-12 col-sm-4">
+                            <div class="form-group">
+                                <label for="prep-time">Preparation time</label>
+                                <div class="input-group">
+                                    <input class="form-control" id="prep-time" type="number" name="recipe[prep_time]" placeholder="">
+                                    <div class="input-group-addon">min</div>
+                                </div><!-- input-group -->
+                            </div><!-- form-group -->
+                        </div><!-- col-sm-4 -->
+
+                        <!-- Cooking time input-->
+                        <!-- ================= -->
+                        <div class="col-xs-12 col-sm-4">
+                            <div class="form-group">
+                                <label for="cooking-time">Cooking time</label>
+                                <div class="input-group">
+                                    <input class="form-control" id="cooking-time" type="number" name="recipe[cooking_time]" placeholder="">
+                                    <div class="input-group-addon">min</div>
+                                </div><!-- input-group -->
+                            </div><!-- form-group -->
+                        </div><!-- col-sm-4 -->
+
+                        <!-- Calories input -->
+                        <!-- ============== -->
+                        <div class="col-xs-12 col-sm-4">
+                            <div class="form-group">
+                                <label for="kcal">Calories</label>
+                                <div class="input-group">
+                                    <input class="form-control" id="kcal" type="number" name="recipe[kcal]" placeholder="">
+                                    <div class="input-group-addon">per portion</div>
+                                </div><!-- input-group -->
+                            </div><!-- form-group -->
+                        </div><!-- col-sm-4 -->
+
+                    </div><!-- row -->
+
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-5 col-sm-offset-2">
+
+                            <!-- Vegeterian checkbox-->
+                            <!-- ================== -->
+                         
+                            <div class="row">
+                                <div class="vegeterian">
+                                    <div class="col-xs-5">
+                                        <label for="vegetarian">Vegeterian</label>
+                                    </div><!-- col-xs-4 -->
+                                    <div class="col-xs-3">
+                                        <label class="radio-inline">
+                                          <input type="radio" name="recipe[vegeterian]" id="YesVegi" value="Yes"> Yes
+                                        </label>
+                                    </div><!-- col-xs-4 -->
+                                    <div class="col-xs-2">
+                                        <label class="radio-inline">
+                                          <input type="radio" name="recipe[vegeterian]" id="NoVegi" value="No"> No
+                                        </label>
+                                    </div><!-- col-xs-4 -->
+                                </div><!-- vegeterian -->
+                            </div><!-- row -->
+                            
+
+                            <!-- Vegan checkbox -->
+                            <!-- ============== -->
+                            <div class="row">
+                                <div class="vegan">
+                                    <div class="col-xs-5">
+                                        <label>Vegan</label>
+                                    </div><!-- col-xs-4 -->
+                                    <div class="col-xs-3">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="recipe[vegan]" id="YesVegan" value="Yes"> Yes
+                                        </label>
+                                    </div><!-- col-xs-4 -->
+                                    <div class="col-xs-2">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="recipe[vegan]" id="NoVegan" value="No"> No
+                                        </label>
+                                    </div><!-- col-xs-4 -->
+                                </div><!-- vegan -->
+                            </div><!-- row -->
+
+                            <!-- Gluten Free checkbox -->
+                            <div class="row">
+                                <div class="glutenFree">
+                                    <div class="col-xs-5">
+                                        <label>Gluten Free </label>
+                                    </div><!-- col-xs-4 -->
+                                    <div class="col-xs-3">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="recipe[glutenFree]" id="YesGF" value="Yes"> Yes
+                                        </label>
+                                    </div><!-- col-xs-4 -->
+                                    <div class="col-xs-2">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="recipe[glutenFree]" id="NoGF" value="No"> No
+                                        </label>
+                                    </div><!-- col-xs-4 -->
+                                </div><!-- glutenFree -->
+                            </div><!-- row -->
+
+                            <!-- Dairy Free checkbox -->
+                            <div class="row">
+                                <div class="dairyFree">
+                                    <div class="col-xs-5">
+                                        <label>Dairy Free</label>
+                                    </div><!-- col-xs-4 -->
+                                    <div class="col-xs-3">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="recipe[dairyFree]" id="YesGF" value="Yes"> Yes
+                                        </label>
+                                    </div><!-- col-xs-4 -->
+                                    <div class="col-xs-2">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="recipe[dairyFree]" id="NoGF" value="No"> No
+                                        </label>
+                                    </div><!-- col-xs-4 -->
+                                </div><!-- dairyFree -->
+                            </div><!-- row -->
+                        </div><!-- col-sm-6 -->
+
+                        <!-- Serves buttons-->
+                        <div class="col-xs-12 col-sm-3 ">
+                            <div class="form-group">
+                                <label for="numberDisplay">Serves</label>
+                                <div class="plus-minus">
+                                    <!-- Minus button -->
+                                    <a id="btn-minus"><i class="fas fa-minus"></i></a>
+                                    <div class="people-served">
+                                        <!-- Person icon with number -->
+                                        <i class="fas fa-user"></i><span id="numberDisplay" name="numerek"> x1</span>
+                                        <input type="hidden" id="dbServes" name="recipe[serves]">
+                                    </div>
+                                    <!-- Plus button -->
+                                    <a id="btn-plus"><i class="fas fa-plus"></i></a>
+                                </div>
+                                <script>
+                                    // Plus button
+                                    var plus_btn = document.querySelector("#btn-plus");
+                                    // Minus button
+                                    var minus_btn = document.querySelector("#btn-minus");
+                                    // Number to display
+                                    var display = document.querySelector("#numberDisplay");
+                                    var dbServes = document.querySelector("#dbServes");
+                                    var score = 1;
+
+                                    // Add 1 when click on plus button
+                                    plus_btn.addEventListener("click", function() {
+                                        score++;
+                                        display.textContent = " x" + score;
+                                        dbServes.value = score;
+                                    });
+
+                                    // Minus 1 when click on minus button
+                                    minus_btn.addEventListener("click", function() {
+                                        if (score >= 2) {
+                                            score--;
+                                            display.textContent = " x" + score;
+                                            dbServes.value = score;
+                                        }
+                                    });
+                                </script>
+                            </div><!-- form-group -->
+                        </div><!-- col-sm-3 -->
+                        
+                    </div><!-- row -->
+
+
+                    <!-- ******************* -->
+                    <!--     INGREDIENTS     -->
+                    <!-- ******************* -->
+                    <h2 id="h2-ingredients">Ingredients</h2>
+                    <div class="col-xs-12">
+                        
+                            <div class="row">
+
+                                <!-- Amount of ingredient (number only) -->
+                                <!-- ================================== -->
+                                <div class="col-xs-6 col-sm-2">
+                                    <div class="form-group">
+                                        <label for="amount">Amount</label>
+                                        <input class="form-control" id="amount" type="number">
+                                    </div><!-- form-group -->
+                                </div><!-- col-xs-2 -->
+
+                                <!-- Unit of ingredient (dropdown menu) -->
+                                <!-- ================================== -->
+                                <div class="col-xs-6 col-sm-2">
+                                    <div class="form-group">
+                                        <label for="units">Units</label>
+                                        <select class="form-control" id="units" name="recipe[unit]">
+                                            <option value="g" selected="selected">g</option>
+                                            <option value="kg">kg</option>
+                                            <option value="item">item</option>
+                                        </select>
+                                    </div><!-- form-group -->
+                                </div><!-- col-xs-2 -->
+
+                                <!-- Ingredient name (input field) -->
+                                <!-- ============================= -->
+                                <div class="col-xs-10 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="ingredient">Ingredient</label>
+                                        <input class="form-control" id="name" type="text" name="recipe[name]" maxlength="45">
+                                    </div><!-- form-group -->
+                                </div><!-- col-xs-6 -->
+
+                                <!-- Submit ingredient plus button -->
+                                <!-- ============================= -->
+                                <div class="col-xs-2 col-sm-2 plusIng">
+                                    <i id="plusBtn" type="button" onClick="addIng()" class="fas fa-plus-circle"></i>
+                                </div><!-- col-xs-2 -->
+                            </div><!-- row -->
+
+                            <!-- List to display ingredients -->
+                            <!-- =========================== -->
+                            <div class="row">
+                                <div class="col-sm-10">
+                                    <ul id="ulIng"></ul>
+                                </div><!-- col-sm-10 -->
+                            </div><!-- row -->
+                        
+                    </div><!-- col-sm-12 -->
+
+                    <script>
+                    var array = [];
+                        // // Create a "bin" icon and append it to each list item
+                        // var listItems = document.getElementsByTagName("LI");
+                        // var i;
+                        // for (i = 0; i < listItems.length; i++) {
+                        //     var span = document.createElement("SPAN");
+                        //     // Unicode number for bin icon from FontAwsome
+                        //     var txt = document.createTextNode("\uf2ed");
+                        //     span.className = "far";
+                        //     span.appendChild(txt);
+                        //     listItems[i].appendChild(span);
+                        // };
+
+                        // // Click on a bin icon to hide the current list item
+                        // var bin = document.getElementsByClassName("far");
+                        // var i;
+                        // for (i = 0; i < bin.length; i++) {
+                        //     bin[i].onclick = function() {
+                        //         var div = this.parentElement;
+                        //         div.style.display = "none";
+                        //         array.splice(i, 1);
+                        //     }
+                        // }
+
+                        // Create a new list item when clicking on the plus button
+                        
+                        function addIng() {
+                            // Create new li 
+                            var li = document.createElement("li");
+                            // Select chosen amount of ingredient 
+                            var amount = document.querySelector("#amount").value;
+                            // Select ingredient's unit dropdown menu
+                            var units = document.querySelector("#units");
+                            // Select chosen ingredient's unit
+                            var chosen_unit = units.options[units.selectedIndex].text;
+                            // Select chosen ingredient's name
+                            var name = document.querySelector("#name").value;
+                            // Select list of ingredients
+                            var ul = document.querySelector("#ulIng");
+                            
+                            var Ingredient = document.createTextNode(amount + " " + chosen_unit + " " + name + " ");
+                            li.appendChild(Ingredient);
+                            li.setAttribute("name", "recipe[ingredients]");
+                            // No allowed to leave ingredient's name field empty
+                            if (name === "") {
+                                alert("Don't forget to add ingredient!");
+                            } else {
+                                ul.appendChild(li);
+                                array.push(li);
+                                Ingredient.create(
+                            {
+                                name: name,
+                                amount: amount,
+                                unit: chosen_unit
+                            }, function(err, inng) {
+                                if (err) {
+                                    console.log(err);
+                                } else {
+                                    recipe.ingredients.push(inng);
+                                    recipe.save();
+                                    console.log("Created new ingredient!");
+                                }
+                            });
+
+
+
+                            }
+
+                            // Clear input fields after submiting
+                            document.getElementById("amount").value = "";
+                            document.getElementById("name").value = "";
+
+                            //Create a "bin" icon and append it to each list item
+                            var span = document.createElement("SPAN");
+                            var txt = document.createTextNode("\uf2ed");
+                            span.className = "far";
+                            span.appendChild(txt);
+                            li.appendChild(span);
+                            
+                            // Click on a bin icon to hide the current list item
+                            var bin = document.getElementsByClassName("far");
+                            var i;
+                            for (i = 0; i < bin.length; i++) {
+                                bin[i].onclick = function() {
+                                    var div = this.parentElement;
+                                    var index = array.indexOf(div);
+                                    if (index > -1) {
+                                      array.splice(index, 1);
+                                    }
+                                    div.style.display = "none";
+                                    
+                                }
+                            }
+
+                            
+                        }
+
+                        // Select plus button to add ingredient
+                        var button = document.getElementById("plusBtn");
+                        // Select ingredient's name input field
+                        // var name = document.querySelector("#name");
+                        // // Submit the form after click Enter
+                        // name.addEventListener("keyup", function(event) {
+                        //         event.preventDefault();
+                        //         if (event.keyCode === 13) {
+                        //             button.click();
+                        //         }
+                        //     });
+                    </script>
+
+
+                    <!-- ******************* -->
+                    <!--        METHOD       -->
+                    <!-- ******************* -->
+                    <!-- recipe method -->
+                    <h2 id="h2-method">Method</h2>
+                    <div class="form-group">
+                        <label for="method">recipe method</label>
+                        <textarea
+                            class="form-control"
+                            rows="3"
+                            id="method"
+                            type="text"
+                            name="recipe[method]"
+                            placeholder="How to make that recipe?"></textarea>
+                    </div>
+                    
+
+                    <!-- ******************* -->
+                    <!--        SUBMIT       -->
+                    <!-- ******************* -->
+                    <div class="form-group">
+                        <button id="submit-btn" class="btn btn-md btn-primary btn-block">Submit</button>
+                    </div>
+                    <a href="/recipes"> Go Back</a>
+                </form>
+            </div><!-- .new -->
+        </div><!-- .col-md-8 -->
+    </div><!-- row -->
+</div><!-- container -->
+
+
+<% include ../partials/footer %>
+<!--  -->

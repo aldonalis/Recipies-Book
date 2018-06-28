@@ -1,0 +1,289 @@
+/* ================= */
+/*      GENERAL      */
+/* ================= */
+body {
+	font-family: 'News Cycle', sans-serif;
+	background: #f8f8f8;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Great Vibes', cursive;
+	border-bottom: 1px solid black;
+	margin-top: 10px;
+}
+
+p {
+	font-size: 15px;
+}
+
+h1 {
+	font-size: 40px;
+}
+
+textarea {
+	resize: none;
+}
+
+.form {
+	background: #fff;
+}
+
+
+/* =================================== */
+/*               NEW                  */
+/* =================================== */
+
+
+
+.form-control {
+	border: 1px solid black;
+	border-radius: 8px;
+}
+
+.form-control:hover {
+	border: 1px solid #2e6da4;
+}
+.new .form-control:focus, .form-group:focus {
+	border: 1px solid #2e6da4;
+	color: #2e6da4;
+	outline: none !important;
+	box-shadow: none;
+}
+
+.input-group-addon {
+	border: 1px solid black;
+	background: none;
+}
+
+#h2-information, #h2-ingredients, #h2-method {
+	margin-top: 30px;
+}
+
+#btn-plus, #btn-minus, .fa-plus-circle {
+	font-size: 25px;
+	color: black;
+}
+
+#btn-plus {
+	float: right;
+}
+
+#btn-minus {
+	float: left;
+}
+
+.plus-minus a {
+	text-decoration: none;
+}
+
+#numberDisplay, .fa-user  {
+	font-size: 20px;
+	color: black;
+}
+
+.fa-plus, .fa-minus, .fa-plus-circle {
+	cursor: pointer;
+}
+
+.fa-plus-circle:active, .far:active, .fa-plus:active, .fa-minus:active,.fa-plus-circle:hover, .far:hover, .fa-minus:hover, .fa-plus:hover, .form-group:hover {
+	color: #2e6da4;
+}
+
+.people-served {
+	display: inline-block;
+	margin: 5px auto;
+}
+
+.plus-minus {
+	width: 100%;
+	text-align: center;
+}
+
+.fa-plus-circle {
+	margin-top: 28px;
+}
+
+li {
+	font-size: 16px;
+}
+
+.far {
+	margin-top: 3px;
+	float: right;
+	cursor: pointer;
+}
+
+
+
+#units {
+	padding: 0;
+	padding-left: 15%;
+	padding-bottom: : 5%;
+
+
+}
+/* ================================= */
+/*              SHOW PAGE            */
+/* ================================= */
+
+
+
+/*Every white square in show page has a .thumbnail class*/
+.thumbnail {
+	margin-left: 0;
+	margin-right: 0;
+	margin-bottom: 10px;
+	background: none;
+	border: 0px;
+}
+
+.rec-photo, .rec-ingredients, .rec-desc, .rec-info, .rec-social, .rec-method, .rec-comments, .form {
+	background: #fff;
+	padding: 10px 25px;
+	border-radius: 7px;
+}
+
+.rec-desc, .rec-photo, .rec-info, .rec-ingredients, .rec-method {
+	margin-bottom: 25px;
+}
+
+.container {
+	padding-right: 0;
+}
+
+.thumbnail img {
+	width: 100%;
+	margin-top: 10px;
+}
+
+/*** Title ***/
+.rec-title {
+	border-bottom: 1px solid black;
+}
+
+.rec-title h1 {
+	border-bottom: 0px;
+	display: inline-block;
+	margin-bottom: 0;
+}
+
+.rec-title form {
+	display: inline-block;
+	float: right;
+	margin-top: 15px;
+	margin-right: 15px;
+	width: 100px;
+}
+
+
+/*** Edit and Delete buttons ***/
+
+.btn, .btn-primary, .btn-danger {
+	display: block;
+	background: none;
+    border: 1px solid;
+    border-radius: 8px;
+    color: black;
+}
+
+.btn-danger:hover {
+	border-color: #d9534f;
+	color: #d9534f;
+	background: none;
+}
+
+.btn-primary:hover {
+	border-color: #2e6da4;
+	color: #2e6da4;
+	background: none;
+}
+
+/*** Social Square ***/
+.social-btn {
+	margin: 8px auto;
+	width: 70%;
+	outline: none;
+}
+
+.social-btn:hover {
+	border-color: #2e6da4;
+	color: #2e6da4;
+}
+
+.social-btn:focus {
+	outline: none !important;
+	box-shadow: none;
+}
+
+.social-btn:active  {
+	outline: 0;
+}
+
+.social-icons {
+	margin: auto 30%;
+}
+
+.social-icon {
+    height: 40px;
+    width: 40px;
+    margin: 10px;
+    text-align: center;
+    display: table-cell;
+    vertical-align:middle;
+}
+
+.social-icon i {
+	color: black;
+}
+
+
+/* ================================== */
+/*            COMMENTS                */
+/* ================================== */
+
+/* Page for adding new comment */
+
+
+.btn-new-comment {
+	width: 20%;
+}
+
+.btn-new-comment:hover {
+	color: #28a745;
+	border: 1px solid #28a745;
+	background: none;
+} 
+
+
+/* ================================== */
+/*            INDEX PAGE              */
+/* ================================== */
+
+
+.main a, .main h1, .main p {
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+}
+
+.main a {
+	width: 35%;
+}
+
+.preview {
+	background: #fff;
+	margin-right: 15px;
+	border-radius: 8px;
+}
+
+.preview img {
+	border-radius: 5px;
+	border: 1px solid #eee;
+	padding: 3px;
+}
+
+.preview a {
+	width: 60%;
+	margin-right: auto;
+	margin-left: auto;
+}
