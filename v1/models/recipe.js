@@ -13,16 +13,14 @@ var recipeSchema = new mongoose.Schema({
     glutenFree: String,
     dairyFree: String,
     serves: Number,
-    ingredient: [{
-        name: String,
-        amount: String
-    }],
+    ingredient: [String],
     comments: [
    		{
    			type: mongoose.Schema.Types.ObjectId,
    			ref: "Comment"
    		}
-    ]
+    ], 
+    method: String
 });
 
 module.exports = mongoose.model("Recipe", recipeSchema);

@@ -3,7 +3,7 @@
 <div class="container">
     <div class="jumbotron">
         <div class="container main">
-            <h1>Welcome to Online recipes Book!</h1>
+            <h1>Welcome to Online Recipes Book!</h1>
             <p>The only place where you can online store your favourite recipes</p>
             <p>
                 <a class="btn btn-primary btn-lg" href="/recipes/new">Create new recipe</a>
@@ -11,11 +11,11 @@
         </div>
     </div>
     
-    <div class="row text-center" >
+    <div class="row text-center rec-windows grid" >
         <% recipes.forEach(function(recipe) { %>
-            <div class="col-md-3  col-sm-6 preview">
+            <div class="col-lg-4 col-sm-6 grid-item">
                 <div class="thumbnail">
-                    <img src="<%= recipe.image %>">
+                    <a href="/recipes/<%= recipe._id %>"><img src="<%= recipe.image %>"></a>
                     <div class="caption">
                         <h2><%= recipe.title %></h2>
                     </div>
@@ -23,10 +23,24 @@
                         <a href="/recipes/<%= recipe._id %>" class="btn btn-primary">More Info</a>
                     </p>
                 </div>
+                
             </div>
         <% }); %>
     </div>
 </div>
 
+<script>
+// init Masonry
+var $grid = $('.grid').masonry({
+  itemSelector : '.grid-item',
+  horizontalOrder: true
+});
+// layout Masonry after each image loads
+$grid.imagesLoaded().progress( function() {
+  $grid.masonry('layout');
+});
+
+
+</script>
 
 <% include partials/footer %>

@@ -3,8 +3,11 @@ var express        = require("express"),
     bodyParser     = require("body-parser"),
     mongoose       = require("mongoose"),
     methodOverride = require("method-override"),
-    Recipe        = require("./models/recipe"),
+    passport       = require("passport"),
+    LocalStrategy  = require("passport-local"),
+    Recipe         = require("./models/recipe"),
     Comment        = require("./models/comment"),
+    User           = require("./models/user"),
     seedDB         = require("./seeds");
     
 // APP CONFIG
@@ -15,7 +18,30 @@ app.use(express.static("public"));
 app.use(methodOverride("_method"));
 seedDB();
 
-// ROUTES
+//PASSPORT CONFIGURATION
+app.use(require("express-session")({
+  secret: "Online Recipe Book Application",
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+app.use(function(req, res, next) {
+  res.locals.currentUser = req.user;
+  next();
+});
+
+//=====================
+//       ROUTES
+//=====================
+
+
+
+
 
 app.get("/", function(req, res) {
     res.redirect("/recipes");
@@ -28,7 +54,7 @@ app.get("/recipes", function(req, res) {
           console.log(err);
           console.log("Error!");
         } else {
-            res.render("index", {recipes: recipes});
+            res.render("index", {recipes: recipes, currentUser: req.user});
         }
     })
 }); 
@@ -45,7 +71,6 @@ app.post("/recipes", function(req, res) {
         if (err) {
             console.log(err);
         } else {
-            // redirect to recipes page
             res.redirect("/recipes"); 
         }
     });
@@ -57,7 +82,7 @@ app.get("/recipes/:id", function(req, res) {
        if (err) {
            console.log(err);
        } else {
-          console.log(foundRecipe);
+          //console.log(foundRecipe);
           res.render("recipes/show", {recipe: foundRecipe});
        }
    });
@@ -87,7 +112,6 @@ app.put("/recipes/:id", function(req, res) {
 
 // DELETE route 
 app.delete("/recipes/:id", function(req, res) {
-  // destroy route
   Recipe.findByIdAndRemove(req.params.id, function(err){
     if (err) {
       res.redirect("/recipes");
@@ -104,8 +128,8 @@ app.delete("/recipes/:id", function(req, res) {
 // =====================
 
 //NEW route (displays the form)
-app.get("/recipes/:id/comments/new", function(req, res) {
-  recipe.findById(req.params.id, function(err, recipe) {
+app.get("/recipes/:id/comments/new", isLoggedIn, function(req, res) {
+  Recipe.findById(req.params.id, function(err, recipe) {
     if (err) {
       console.log(err);
     } else {
@@ -115,8 +139,8 @@ app.get("/recipes/:id/comments/new", function(req, res) {
 });
 
 // CREATE route  
-app.post("/recipes/:id/comments", function(req, res) {
-  recipe.findById(req.params.id, function(err, recipe) {
+app.post("/recipes/:id/comments", isLoggedIn, function(req, res) {
+  Recipe.findById(req.params.id, function(err, recipe) {
     if (err) {
       console.log(err);
     } else {
@@ -136,7 +160,7 @@ app.post("/recipes/:id/comments", function(req, res) {
 
 // EDIT route
 app.get("/recipes/:id/comments/:comment_id/edit", function(req, res) {
-  recipe.findById(req.params.id, function(err, recipe) {
+  Recipe.findById(req.params.id, function(err, recipe) {
     if (err) {
       console.log(err);
     } else {
@@ -173,9 +197,64 @@ app.delete("/recipes/:id/comments/:comment_id", function(req, res) {
   });
 });
 
+// ===============
+//   AUTH ROUTES
+// ===============
 
+//REGISTER
+//########
 
+// Show register form
+app.get("/register", function(req, res) {
+  res.render("register");
+});
 
+//Handle sign up logic
+app.post("/register", function(req, res) {
+  var newUser = new User({username: req.body.username});
+  User.register(newUser, req.body.password, function(err, user) {
+    if(err) {
+      console.log(err);
+      return res.render("register");
+    }
+    passport.authenticate("local")(req, res, function(){
+      res.redirect("/recipes");
+    });
+  });
+});
+
+//LOGIN
+//#####
+
+// Show login form
+app.get("/login", function(req, res) {
+  res.render("login");
+});
+
+// Handle login logic
+// app.post("/login", middleware, callback)
+app.post("/login", passport.authenticate("local", 
+  {
+    successRedirect: "/recipes",
+    failureRedirect: "/login"
+  }), function(req, res) {
+});
+
+//LOGOUT
+//######
+
+// Handle logout logic
+app.get("/logout", function(req, res) {
+  req.logout();
+  res.redirect("/recipes");
+})
+
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect("/login");
+}
 
 
 // sets the space where we can review app

@@ -1,8 +1,9 @@
 <% include ../partials/header %>
 
 
-<div class="container">
+<div class="container show_page">
 	<div class="row">
+		<!-- <div class="col-xs-11"> -->
 	<div class="rec-left">
 		<div class="col-xs-12 col-sm-8">
 			<div class="rec-photo">
@@ -12,7 +13,7 @@
 						<a href="/recipes/<%= recipe._id %>/edit" class="btn btn-primary">Edit</a>
 					</form>
 					<form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST" class="buttons">
-						<a class="btn btn-danger">Delete</a>
+						<button class="btn btn-danger">Delete</button>
 					</form>
 				</div>
 				<div class="thumbnail">
@@ -21,16 +22,18 @@
 			</div><!-- rec-photo -->
 			<div class="rec-ingredients">
 				<h2>Ingredients:</h2>
-				
-				
+				<% recipe.ingredient.forEach(function(ing) { %>
+					<li><%= ing %></li>
+				<% }); %>
 			</div><!-- rec-ingredients -->
 			
 		</div><!-- .col -->
 	</div><!-- rec-left -->
 	
 
+
 	<div class="rec-right">
-		<div class="col-xs-12 col-sm-3"> 
+		<div class="col-xs-12 col-sm-4"> 
 			<div class="rec-desc">
 				<h2>Description:</h2>
 				<p class="description"><%= recipe.description %></p>
@@ -38,14 +41,19 @@
 			<div class="rec-info">
 				<h2>Information:</h2>
 				<div class="thumbnail">
-					<p><strong>Preparation time: </strong><%= recipe.prep_time %>min</p>
-					<p><strong>Cooking time: </strong><%= recipe.cooking_time %>min</p>
-					<p><strong>Calories: </strong><%= recipe.kcal %></p>
+					<p><strong id="information_key">Preparation time: </strong><%= recipe.prep_time %> min</p>
+					<p><strong>Cooking time: </strong><%= recipe.cooking_time %> min</p>
+					<p><strong>Calories: </strong><%= recipe.kcal %> (per portion)</p>
 					<p><strong>Vegeterian: </strong><%= recipe.vegeterian %></p>
 					<p><strong>Vegan: </strong><%= recipe.vegan %></p>
 					<p><strong>Gluten Free: </strong><%= recipe.glutenFree %></p>
 					<p><strong>Dairy Free: </strong><%= recipe.dairyFree %></p>
-					<p><strong>Serves: </strong><%= recipe.serves %></p>
+					
+						<% if (recipe.serves !== null) { %>
+							<p><strong>Serves: </strong><%= recipe.serves %></p>
+						<% } else { %>
+							<p><strong>Serves: </strong>1</p>
+						<% } %>
 				</div>
 			</div><!-- rec-info -->
 			<div class="rec-social">
@@ -63,7 +71,7 @@
 			</div>
 		</div><!-- .col -->
 	</div><!-- rec-right -->
-	</div>
+	
 
 
 
@@ -75,21 +83,25 @@
 				<p><%= recipe.method %></p>
 			</div><!-- rec-method -->
 			<div class="rec-comments">
-				<h2>Comments:</h2>
-				<a class="btn btn-success btn-new-comment" href="/recipes/<%= recipe._id %>/comments/new">Create new comment</a>
-
+				<div class="comments_header">
+					<h2 id="comment_h2">Comments:</h2>
+					<a class="btn btn-outline-success btn-new-comment" href="/recipes/<%= recipe._id %>/comments/new">Create new comment</a>
+				</div>
 				<% recipe.comments.forEach(function(comment) { %>
-				    <p>
-				    	<strong><%= comment.author %></strong> - <%= comment.text %>
-				        <a class="btn" href="/recipes/<%= recipe._id %>/comments/<%= comment._id%>/edit">Edit</a>
-				        <form action="/recipes/<%= recipe._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
-				        	<button class="btn btn-sm btn-danger">Delete</button>
+				    <li id="comment">
+				    	<strong><%= comment.author %></strong> <p id="comment_content"><%= comment.text %></p>
+				    
+				        <button id="edit_comment_btn"><a href="/recipes/<%= recipe._id %>/comments/<%= comment._id%>/edit" id="edit_comment_a">Edit</a></button>
+				        <form id="delete_comment_form"action="/recipes/<%= recipe._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+				        	<button id="delete_comment_btn">Delete</button>
 				        </form>
-				    </p>
+				    </li>
 				<% }); %>
 			</div><!-- rec-comments -->
 		</div><!-- .col -->
 	</div><!-- rec-down -->
+	</div>
+<!-- </div> -->
 </div><!-- row -->
 </div><!-- container -->
 
