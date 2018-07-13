@@ -106,33 +106,33 @@ function seedDB() {
 	// Remove all recipes
 	recipe.remove({}, function(err) {
 		if (err) {
-			console.log(err);
-		} else {
-			console.log("Removed all recipes!");
-			// Add new recipes
-			data.forEach(function(seed) {
-				recipe.create(seed, function(err, recipe) {
-					if (err) {
-						console.log(err);
-					} else {
-						console.log("Added new recipes!");
-						Comment.create(
-							{
-								author: "Harry Potter",
-								text: "This recipe is amazing! I will recommend it to Hogwart's kitchen chef! typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem his recipe is amazing! I will recommend it to Hogwart's kitchen chef! typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsuhis recipe is amazing! I will recommend it to Hogwart's kitchen chef! typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsuhis recipe is amazing! I will recommend it to Hogwart's kitchen chef! typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem IpsuIpsum "
-							}, function(err, comment) {
-								if (err) {
-									console.log(err);
-								} else {
-									recipe.comments.push(comment);
-									recipe.save();
-									console.log("Created new comment!");
-								}
-							});
-					}
-				});
-			});
-		}
+			console.log(err); }
+		// } else {
+		// 	console.log("Removed all recipes!");
+		// 	// Add new recipes
+		// 	data.forEach(function(seed) {
+		// 		recipe.create(seed, function(err, recipe) {
+		// 			if (err) {
+		// 				console.log(err);
+		// 			} else {
+		// 				console.log("Added new recipes!");
+		// 				Comment.create(
+		// 					{
+		// 						author: "Harry Potter",
+		// 						text: "This recipe is amazing! I will recommend it to Hogwart's kitchen chef! typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem his recipe is amazing! I will recommend it to Hogwart's kitchen chef! typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsuhis recipe is amazing! I will recommend it to Hogwart's kitchen chef! typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsuhis recipe is amazing! I will recommend it to Hogwart's kitchen chef! typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem IpsuIpsum "
+		// 					}, function(err, comment) {
+		// 						if (err) {
+		// 							console.log(err);
+		// 						} else {
+		// 							recipe.comments.push(comment);
+		// 							recipe.save();
+		// 							console.log("Created new comment!");
+		// 						}
+		// 					});
+		// 			}
+		// 		});
+		// 	});
+		// }
 	});
 }
 

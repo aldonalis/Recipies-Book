@@ -9,12 +9,16 @@
 			<div class="rec-photo">
 				<div class="rec-title">
 					<h1><%= recipe.title %></h1>
-					<form>
-						<a href="/recipes/<%= recipe._id %>/edit" class="btn btn-primary">Edit</a>
-					</form>
-					<form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST" class="buttons">
-						<button class="btn btn-danger">Delete</button>
-					</form>
+					</br>
+					<p id="recipe_createdBy">Created by <em><%= recipe.author.username %></em></p>
+					<% if(currentUser && recipe.author.id.equals(currentUser._id)) { %>
+						<form>
+							<a href="/recipes/<%= recipe._id %>/edit" class="btn btn-primary">Edit</a>
+						</form>
+						<form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST" class="buttons">
+							<button class="btn btn-danger">Delete</button>
+						</form>
+					<% } %>
 				</div>
 				<div class="thumbnail">
 					<img src="<%= recipe.image %>">
@@ -89,7 +93,7 @@
 				</div>
 				<% recipe.comments.forEach(function(comment) { %>
 				    <li id="comment">
-				    	<strong><%= comment.author %></strong> <p id="comment_content"><%= comment.text %></p>
+				    	<strong><%= comment.author.username %></strong> <p id="comment_content"><%= comment.text %></p>
 				    
 				        <button id="edit_comment_btn"><a href="/recipes/<%= recipe._id %>/comments/<%= comment._id%>/edit" id="edit_comment_a">Edit</a></button>
 				        <form id="delete_comment_form"action="/recipes/<%= recipe._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">

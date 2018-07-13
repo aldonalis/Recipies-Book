@@ -171,9 +171,13 @@ li {
 .rec-title form {
 	display: inline-block;
 	float: right;
-	margin-top: 15px;
+	margin-top: -10px;
 	margin-right: 15px;
 	width: 100px;
+}
+
+#recipe_createdBy {
+	display: inline-block;
 }
 
 

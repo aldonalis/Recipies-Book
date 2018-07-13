@@ -20,7 +20,14 @@ var recipeSchema = new mongoose.Schema({
    			ref: "Comment"
    		}
     ], 
-    method: String
+    method: String,
+    author: {
+      username: String,
+      id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+      }
+    }
 });
 
 module.exports = mongoose.model("Recipe", recipeSchema);
